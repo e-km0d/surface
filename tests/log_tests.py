@@ -6,9 +6,12 @@ import os
 
 def main():
     """
-    TODO: Document
+    Main function for testing the logging system
+    Gets the values from a dictionary which are a number of functions. These functions are tests
+    These functions are then ran. 
+    These functions can return AssertionError exceptions
 
-    :return:
+    :return: No return
     """
 
     for test_func in get_tests(__name__).values():
@@ -17,9 +20,9 @@ def main():
 
 def get_log_files():
     """
-    TODO: Document
+    Getter that returns a set of logging files found in the logging directory
 
-    :return:
+    :return: any files with the .log extension found
     """
 
     files = set()
@@ -31,9 +34,9 @@ def get_log_files():
 
 def test_create_logs():
     """
-    TODO: Document
+    Test that checks if 5 logging files are created. 1 for each level (Debug, Info, Warning, Error) and the 'verbose' file
 
-    :return:
+    :return: Nothing if test passes, AssertionError exception if the test fails
     """
 
     Log.debug("Test debug message")
@@ -47,9 +50,11 @@ def test_create_logs():
 
 def test_level_filtering():
     """
-    TODO: Document
+    Test that checks each logging file has the correct length.
+    The "verbose" logging file should be 4 lines since its composed of the 4 levels / the 4 other logging files
+    The other logging files should be 1 line since all other messages are appended on the end
 
-    :return:
+    :return: Nothing if test passes, AssertionError exception if the test fails
     """
 
     for file in get_log_files():
